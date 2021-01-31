@@ -34,6 +34,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ScrollView;
@@ -98,7 +99,7 @@ public class EditorActivity extends AppCompatActivity {
 
     Uri lastTriedSystemUri = null;
 
-    
+
     boolean changed = false;
 
     boolean exitDialogShown = false;
@@ -298,7 +299,7 @@ public class EditorActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
     }
-    
+
     @Override
     public void onBackPressed() {
         if (this.changed && !exitDialogShown) {
@@ -445,7 +446,7 @@ public class EditorActivity extends AppCompatActivity {
 
         MenuItem redoMenu = menu.findItem(R.id.menu_edit_redo);
         redoMenu.setEnabled(editTextUndoRedo.getCanRedo());
-        
+
         updateRecentFiles(menu);
 
         return true;
@@ -571,6 +572,8 @@ public class EditorActivity extends AppCompatActivity {
             openRecentFile(4);
         } else if (itemId == R.id.menu_document_new) {
             newFile();
+        } else if (itemId == R.id.menu_dictate) {
+            startDictation();
         } else if (itemId == R.id.menu_document_save) {
             saveFile();
         } else if (itemId == R.id.menu_document_save_as) {
@@ -605,6 +608,11 @@ public class EditorActivity extends AppCompatActivity {
         } else {
             showSettingsActivity();
         }
+    }
+
+    private void startDictation() {
+        View view = findViewById(R.id.speechProgressBar);
+        view.setVisibility(View.VISIBLE);
     }
 
     private void showSettingsActivity() {
@@ -757,7 +765,7 @@ public class EditorActivity extends AppCompatActivity {
             System.exitFromApp(EditorActivity.this);
         }
     }
-    
+
     protected void selectFileUsingAndroidSystemPicker() {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);

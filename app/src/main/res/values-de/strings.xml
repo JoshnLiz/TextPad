@@ -89,4 +89,5 @@
     <string name="preferenceAutoSaveCurrentFileTitle">Automatisches Speichern</string>
     <string name="preferenceAutoSaveCurrentFileDescription">Speichern Sie die aktuell bearbeitete Datei automatisch, wenn das Fenster geschlossen wird</string>
 
+	<string name="Dictate">Dictate</string>
 </resources>

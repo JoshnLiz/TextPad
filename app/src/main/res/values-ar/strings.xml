@@ -89,4 +89,5 @@
     <string name="preferenceAutoSaveCurrentFileTitle">الحفظ التلقائي</string>
     <string name="preferenceAutoSaveCurrentFileDescription">حفظ ملف التحرير الحالي تلقائيًا عند إغلاق النافذة</string>
 
+    <string name="Dictate">Dictate</string>
 </resources>
