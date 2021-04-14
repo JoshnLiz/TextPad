@@ -37,6 +37,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -47,6 +48,7 @@ import com.maxistar.textpad.SelectionMode;
 import com.maxistar.textpad.ServiceLocator;
 import com.maxistar.textpad.SettingsService;
 import com.maxistar.textpad.TPStrings;
+import com.maxistar.textpad.tts.Dictator;
 import com.maxistar.textpad.service.AlternativeUrlsService;
 import com.maxistar.textpad.service.RecentFilesService;
 import com.maxistar.textpad.utils.EditTextUndoRedo;
@@ -611,8 +613,10 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     private void startDictation() {
-        View view = findViewById(R.id.speechProgressBar);
+        ProgressBar view = findViewById(R.id.speechProgressBar);
         view.setVisibility(View.VISIBLE);
+        Dictator dictator = new Dictator();
+        dictator.startDictation(mText, this, view);
     }
 
     private void showSettingsActivity() {
